@@ -1,22 +1,21 @@
-Name: Krish Savla (ksavla01)
-Partner: Ranvir Malik (rmalik04)
+Authors: Ranvir Malik (rmalik04), ksavla01
 Assignment: Homework 4 - arith
 
 Compile and Run:
 	- compile using "make arith"
 	- running the program:
-		- for compression : "./arith -c [.ppm image file]"
-		- for decompression : "./arith -d [.ppm image file]"
+		- for compression: "./arith -c [.ppm image file]"
+		- for decompression: "./arith -d [.ppm image file]"
 
 
 Program Description:
 	This program takes a ppm image and compresses it using bit arithmetic.
 	It first converts the RGB pixels into component video pixels, and that
 	converts 4 pixels into one compressed_pixel struct. Finally, the
-	compressed pixels are bit packed into a codeword and stored into a
+	compressed pixels are bit packed into a codeword and stored in a
 	2D unboxed array. 
 
-	To decompress the image, the process is reversed. The program will write
+	The process is reversed to decompress the image. The program will write
 	the decompressed image to stdout. It is best to pipe the output of this 
 	program to an external ".ppm" file. 
 	
@@ -25,7 +24,7 @@ Program Description:
 Architecture:
 
 Our program is broken up into several modules. The modules are as follows:
-    1. 40images.c --> This is the main function for our program. It contains
+    1. 40images.c --> This is the main function of our program. It contains
                       the command loop that will read in the user input and 
                       file from the terminal. Assuming the user input is
                       correct, it will call the corresponding helper functions
@@ -33,11 +32,11 @@ Our program is broken up into several modules. The modules are as follows:
 
     2. Compress40.c --> This is called by the main function after reading in 
                         the user input from the command line. It will either
-                        call a compressor or decompressor function that take
+                        call a compressor or decompressor function that takes
                         in the inputted file and begin to compress or 
                         decompress the image.
 
-    3. arithio.c --> this module handles all the I/O for the program. It is
+    3. arithio.c --> This module handles all the I/O for the program. It is
                      called in compress40. For compression, it reads in a 
                      normal image file and stores the information in a Pnm_ppm
                      and it will write the compressed image to stdout. For
@@ -46,14 +45,14 @@ Our program is broken up into several modules. The modules are as follows:
                      decompressed image to stdout. 
 
     4. compressor.c --> This module acts as a main for the compression process
-                        of the program. It will create arrays and carryout the 
+                        of the program. It will create arrays and carry out the 
                         conversion of pixels starting from a Pnm_ppm object 
                         all the way to a 2d array of compressed bits. It then
                         sends the final 2d array to the I/O module to print.
 
     5. decompressor.c --> This module acts as a main for the decompression 
                         process of the program. It will create arrays and 
-                        carryout the conversion of pixels starting from a 2d
+                        carry out the conversion of pixels starting from a 2d
                         array of bits to a Pnm_ppm object that contains the 
                         decompressed image. It then sends the Pnm_ppm object
                         to the I/O module to print to stdout. 
@@ -72,10 +71,10 @@ Our program is broken up into several modules. The modules are as follows:
                      contains the decompressed image.
     9. float_rgb.h,
        comp_video.h,
-       compressed_pix.h --> these files define the various structs for the
+       compressed_pix.h --> These files define the various structs for the
                             different formats of pixels.
 
-    10. constants.h --> this file contains all the constants for the program
+    10. constants.h --> This file contains all the constants for the program
                         such as blocksize, denominators, quantization values,
                         and width of bits. 
 
